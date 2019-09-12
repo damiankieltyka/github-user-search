@@ -1,0 +1,23 @@
+* {
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    color: tomato;
+}
+
+label {
+    width: 100%;
+    padding: 15px;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+}
+
+input {
+    display: block;
+    background-color: tomato;
+    color: black;
+}
