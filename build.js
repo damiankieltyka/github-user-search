@@ -46,7 +46,13 @@ var App = function (_React$Component) {
     }, {
         key: "render",
         value: function render() {
-            var _this3 = this;
+            var _state = this.state,
+                _state$state = _state.state,
+                _onSubmit = _state$state.onSubmit,
+                onChangeHandle = _state$state.onChangeHandle,
+                searchText = _state.searchText,
+                users = _state.users;
+
 
             return React.createElement(
                 "div",
@@ -59,7 +65,7 @@ var App = function (_React$Component) {
                 React.createElement(
                     "form",
                     { onSubmit: function onSubmit(event) {
-                            return _this3.onSubmit(event);
+                            return _onSubmit(event);
                         } },
                     React.createElement(
                         "label",
@@ -71,11 +77,11 @@ var App = function (_React$Component) {
                         type: "text",
                         id: "searchText",
                         onChange: function onChange(event) {
-                            return _this3.onChangeHandle(event);
+                            return onChangeHandle(event);
                         },
-                        value: this.state.searchText })
+                        value: searchText })
                 ),
-                React.createElement(UsersList, { users: this.state.users })
+                React.createElement(UsersList, { users: users })
             );
         }
     }]);
@@ -125,14 +131,19 @@ var User = function (_React$Component3) {
     _createClass(User, [{
         key: "render",
         value: function render() {
+            var _props$user = this.props.user,
+                avatar_url = _props$user.avatar_url,
+                html_url = _props$user.html_url,
+                login = _props$user.login;
+
             return React.createElement(
                 "div",
                 null,
-                React.createElement("img", { src: this.props.user.avatar_url, style: { maxWidth: '100px' } }),
+                React.createElement("img", { src: avatar_url, style: { maxWidth: '100px' } }),
                 React.createElement(
                     "a",
-                    { href: this.props.user.html_url, target: "_blank" },
-                    this.props.user.login
+                    { href: html_url, target: "_blank" },
+                    login
                 )
             );
         }
