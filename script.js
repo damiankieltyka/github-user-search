@@ -21,18 +21,22 @@ class App extends React.Component {
     }
 
     render() {
+        const {
+            state: { onSubmit, onChangeHandle },
+            searchText, users } = this.state;
+
         return (
             <div>
                 <h1>GitHub User Search</h1>
-                <form onSubmit={event => this.onSubmit(event)}>
+                <form onSubmit={event => onSubmit(event)}>
                     <label htmlFor="searchText">Search by user name</label><br/>
                     <input
                         type="text"
                         id="searchText"
-                        onChange={event => this.onChangeHandle(event)}
-                        value={this.state.searchText}/>
+                        onChange={event => onChangeHandle(event)}
+                        value={searchText}/>
                 </form>
-                <UsersList users={this.state.users}/>
+                <UsersList users={users}/>
             </div>
         );
     }
@@ -54,10 +58,11 @@ class UsersList extends React.Component {
 
 class User extends React.Component {
     render() {
+        const { avatar_url, html_url, login } = this.props.user;
         return (
             <div>
-                <img src={this.props.user.avatar_url} style={{maxWidth: '100px'}}/>
-                <a href={this.props.user.html_url} target="_blank">{this.props.user.login}</a>
+                <img src={avatar_url} style={{maxWidth: '100px'}}/>
+                <a href={html_url} target="_blank">{login}</a>
             </div>
         );
     }
